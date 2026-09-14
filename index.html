@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PartyPlan - Modern, interactive party and event planning platform. Plan birthdays, weddings, corporate events, college fests and more." />
+  <title>PartyPlan — Plan Your Perfect Celebration</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fullscreen Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper" id="header">
+    <nav class="navbar container">
+      <a href="#home" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-champagne-glasses"></i></span>
+        <span class="logo-text">Party<span class="gradient-text">Plan</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#events" class="nav-link">Events</a></li>
+        <li><a href="#ideas" class="nav-link">Ideas</a></li>
+        <li><a href="#themes" class="nav-link">Themes</a></li>
+        <li><a href="#budget" class="nav-link">Budget</a></li>
+        <li><a href="#checklist" class="nav-link">Checklist</a></li>
+        <li><a href="#invitation" class="nav-link">Invites</a></li>
+        <li><a href="#quiz" class="nav-link">Style Quiz</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li class="mobile-cta">
+          <a href="#budget" class="btn btn-primary btn-sm">Get Started</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#budget" class="btn btn-primary desktop-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <!-- Floating Party Elements -->
+      <div class="floating-items" aria-hidden="true">
+        <span class="float-item p1">🎈</span>
+        <span class="float-item p2">✨</span>
+        <span class="float-item p3">🎉</span>
+        <span class="float-item p4">💖</span>
+        <span class="float-item p5">🍸</span>
+        <span class="float-item p6">⭐</span>
+        <span class="float-item p7">🎵</span>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-badge reveal">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> The Ultimate Celebration Planner
+        </div>
+        <h1 class="hero-title reveal">
+          Plan Your Perfect Party, Create <span class="gradient-text">Unforgettable</span> Memories
+        </h1>
+        <p class="hero-subtitle reveal">
+          From birthdays and weddings to school, college, and corporate galas — discover curated themes, intelligent budget tools, and tailored planning checklists for any celebration.
+        </p>
+        <div class="hero-cta-group reveal">
+          <a href="#budget" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Plan My Party</a>
+          <button class="btn btn-secondary" id="celebrate-btn"><i class="fa-solid fa-sparkles"></i> Pop Confetti!</button>
+          <a href="#ideas" class="btn btn-glass"><i class="fa-solid fa-lightbulb"></i> Explore Ideas</a>
+        </div>
+
+        <!-- Quick Stats Counter -->
+        <div class="hero-stats reveal">
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="15000">0</h3>
+            <p>Events Planned</p>
+          </div>
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="98">0</h3>
+            <p>Themes & Setups</p>
+          </div>
+          <div class="stat-card">
+            <h3 class="stat-number" data-target="99">0</h3>
+            <p>% Joy Guaranteed</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="section events-section" id="events">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Categories</span>
+          <h2 class="section-title">What Are You Planning?</h2>
+          <p class="section-desc">Pick an occasion to reveal handcrafted themes, budget estimations, and custom itineraries.</p>
+        </div>
+
+        <div class="grid event-grid">
+          <!-- Card 1 -->
+          <div class="card event-card reveal" data-category="birthday">
+            <div class="card-icon-wrapper bg-pink">🎂</div>
+            <h3>Birthday Party</h3>
+            <p>Lively themes, custom cakes, interactive games, and vibrant balloon backdrops.</p>
+            <div class="card-meta"><span>From <strong>$350</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="birthday">Explore Ideas &rarr;</a>
+          </div>
+          <!-- Card 2 -->
+          <div class="card event-card reveal" data-category="wedding">
+            <div class="card-icon-wrapper bg-purple">💍</div>
+            <h3>Wedding Party</h3>
+            <p>Bespoke decor, luxury catering, acoustic entertainment, and unforgettable romance.</p>
+            <div class="card-meta"><span>From <strong>$2,500</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="wedding">Explore Ideas &rarr;</a>
+          </div>
+          <!-- Card 3 -->
+          <div class="card event-card reveal" data-category="school">
+            <div class="card-icon-wrapper bg-yellow">🎓</div>
+            <h3>School Party</h3>
+            <p>Safe carnivals, colorful inflatables, youth games, and kid-approved treat bars.</p>
+            <div class="card-meta"><span>From <strong>$400</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="school">Explore Ideas &rarr;</a>
+          </div>
+          <!-- Card 4 -->
+          <div class="card event-card reveal" data-category="college">
+            <div class="card-icon-wrapper bg-blue">🏫</div>
+            <h3>College Party</h3>
+            <p>DJ concerts, neon raves, freshers mixers, and unforgettable graduation galas.</p>
+            <div class="card-meta"><span>From <strong>$600</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="college">Explore Ideas &rarr;</a>
+          </div>
+          <!-- Card 5 -->
+          <div class="card event-card reveal" data-category="corporate">
+            <div class="card-icon-wrapper bg-teal">💼</div>
+            <h3>Corporate Party</h3>
+            <p>Polished corporate galas, award dinners, team building retreats, and product launch vibes.</p>
+            <div class="card-meta"><span>From <strong>$1,200</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="corporate">Explore Ideas &rarr;</a>
+          </div>
+          <!-- Card 6 -->
+          <div class="card event-card reveal" data-category="baby-shower">
+            <div class="card-icon-wrapper bg-peach">👶</div>
+            <h3>Baby Shower</h3>
+            <p>Pastel balloon arches, guessing games, mocktail lounges, and gender reveals.</p>
+            <div class="card-meta"><span>From <strong>$450</strong></span></div>
+            <a href="#ideas" class="btn btn-outline btn-sm filter-trigger" data-filter="baby-shower">Explore Ideas &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Party Ideas Explorer (Dynamic Vanilla JS Filtering) -->
+    <section class="section ideas-section bg-surface" id="ideas">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Curated Inspiration</span>
+          <h2 class="section-title">Party Ideas Explorer</h2>
+          <p class="section-desc">Filter through dozens of creative blueprints, complete with guest count and budget guidance.</p>
+        </div>
+
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">All Ideas</button>
+          <button class="filter-btn" data-filter="birthday">Birthday</button>
+          <button class="filter-btn" data-filter="wedding">Wedding</button>
+          <button class="filter-btn" data-filter="college">College</button>
+          <button class="filter-btn" data-filter="corporate">Corporate</button>
+          <button class="filter-btn" data-filter="baby-shower">Baby Shower</button>
+        </div>
+
+        <div class="grid ideas-grid" id="ideas-container">
+          <!-- Populated dynamically by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme Gallery & Lightbox -->
+    <section class="section themes-section" id="themes">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Visual Concept Board</span>
+          <h2 class="section-title">Theme & Decor Showcase</h2>
+          <p class="section-desc">Click any card to inspect full high-resolution inspiration layouts.</p>
+        </div>
+
+        <div class="grid gallery-grid" id="gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-card reveal" data-title="Boho Chic Garden Wedding" data-desc="Earthy tones, pampas grass, warm fairy lights, and reclaimed wooden tables.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Garden Wedding Theme" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Boho Chic Wedding</h4>
+                <p>Wedding • Outdoor • Rustic</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+          <!-- Gallery Item 2 -->
+          <div class="gallery-card reveal" data-title="Electric Neon Rave Night" data-desc="UV blacklights, glowsticks, laser projectors, and bass-heavy festival vibes.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Neon Rave Theme" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Electric Neon Rave</h4>
+                <p>College • DJ • High Energy</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+          <!-- Gallery Item 3 -->
+          <div class="gallery-card reveal" data-title="Pastel Cloud Baby Shower" data-desc="Soft cream and blush balloons, bespoke tiered cake, and botanical mocktail bar.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80" alt="Pastel Baby Shower" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Pastel Dream Shower</h4>
+                <p>Baby Shower • Daytime • Elegant</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+          <!-- Gallery Item 4 -->
+          <div class="gallery-card reveal" data-title="Executive Midnight Gala" data-desc="Velvet drapery, gold accents, champagne towers, and keynote stage setup.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Corporate Gala" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Executive Midnight Gala</h4>
+                <p>Corporate • Black Tie • Grand</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+          <!-- Gallery Item 5 -->
+          <div class="gallery-card reveal" data-title="Carnival Retro Birthday" data-desc="Popcorn carts, carnival games, striped awnings, and candy-colored balloon arches.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80" alt="Carnival Theme" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Carnival Blast Birthday</h4>
+                <p>Birthday • Family • Joyful</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+          <!-- Gallery Item 6 -->
+          <div class="gallery-card reveal" data-title="Rooftop Sunset Soiree" data-desc="Lounge seating, acoustic musicians, craft cocktail bars, and sunset photo backdrops.">
+            <div class="gallery-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=800&q=80" alt="Rooftop Party" loading="lazy" />
+              <div class="gallery-overlay">
+                <h4>Sunset Lounge Soiree</h4>
+                <p>Social • Cocktail • Modern</p>
+                <button class="btn btn-sm btn-primary view-theme-btn">View Theme</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Budget Planner -->
+    <section class="section budget-section bg-surface" id="budget">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Financial Estimator</span>
+          <h2 class="section-title">Smart Budget Planner</h2>
+          <p class="section-desc">Calculate and balance your event expenses with live breakdown analytics.</p>
+        </div>
+
+        <div class="budget-calculator-wrapper reveal">
+          <form id="budget-form" class="budget-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="calc-event-type">Event Type</label>
+                <select id="calc-event-type" class="form-control">
+                  <option value="Birthday">Birthday Party</option>
+                  <option value="Wedding">Wedding Celebration</option>
+                  <option value="College">College Festival</option>
+                  <option value="Corporate">Corporate Gala</option>
+                  <option value="House">House Party</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="calc-guests">Guest Count</label>
+                <input type="number" id="calc-guests" class="form-control" value="50" min="5" max="2000" />
+              </div>
+            </div>
+
+            <div class="form-row grid-3">
+              <div class="form-group">
+                <label for="cost-venue">Venue ($)</label>
+                <input type="number" id="cost-venue" class="form-control cost-input" value="1200" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="cost-food">Food & Drinks ($)</label>
+                <input type="number" id="cost-food" class="form-control cost-input" value="1500" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="cost-decor">Decor & Flowers ($)</label>
+                <input type="number" id="cost-decor" class="form-control cost-input" value="600" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="cost-entertainment">DJ & Entertainment ($)</label>
+                <input type="number" id="cost-entertainment" class="form-control cost-input" value="700" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="cost-photo">Photo & Video ($)</label>
+                <input type="number" id="cost-photo" class="form-control cost-input" value="500" min="0" />
+              </div>
+              <div class="form-group">
+                <label for="cost-misc">Favors & Extras ($)</label>
+                <input type="number" id="cost-misc" class="form-control cost-input" value="300" min="0" />
+              </div>
+            </div>
+
+            <div class="budget-actions">
+              <button type="button" id="reset-budget-btn" class="btn btn-outline">Reset to Defaults</button>
+            </div>
+          </form>
+
+          <!-- Live Budget Breakdown Display -->
+          <div class="budget-summary-card">
+            <div class="total-budget-header">
+              <span>Estimated Investment</span>
+              <h2 id="total-budget-amount">$4,800</h2>
+              <span id="per-guest-cost" class="badge">~$96 / guest</span>
+            </div>
+
+            <div class="progress-breakdown">
+              <div class="breakdown-item">
+                <div class="item-label"><span>Venue</span><span id="pct-venue">25%</span></div>
+                <div class="progress-track"><div class="progress-fill" id="bar-venue" style="width: 25%;"></div></div>
+              </div>
+              <div class="breakdown-item">
+                <div class="item-label"><span>Food & Drink</span><span id="pct-food">31%</span></div>
+                <div class="progress-track"><div class="progress-fill fill-accent" id="bar-food" style="width: 31%;"></div></div>
+              </div>
+              <div class="breakdown-item">
+                <div class="item-label"><span>Decor</span><span id="pct-decor">13%</span></div>
+                <div class="progress-track"><div class="progress-fill fill-pink" id="bar-decor" style="width: 13%;"></div></div>
+              </div>
+              <div class="breakdown-item">
+                <div class="item-label"><span>Entertainment</span><span id="pct-entertainment">15%</span></div>
+                <div class="progress-track"><div class="progress-fill fill-yellow" id="bar-entertainment" style="width: 15%;"></div></div>
+              </div>
+              <div class="breakdown-item">
+                <div class="item-label"><span>Photo & Misc</span><span id="pct-other">16%</span></div>
+                <div class="progress-track"><div class="progress-fill fill-teal" id="bar-other" style="width: 16%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Checklist with LocalStorage -->
+    <section class="section checklist-section" id="checklist">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Task Organizer</span>
+          <h2 class="section-title">Master Planning Checklist</h2>
+          <p class="section-desc">Manage every milestone. Your checklist progress automatically persists across browser refreshes.</p>
+        </div>
+
+        <div class="checklist-wrapper reveal">
+          <div class="checklist-progress-box">
+            <div class="progress-stats">
+              <span class="progress-label" id="checklist-status-text">Your party is 0% ready!</span>
+              <span class="progress-fraction" id="checklist-fraction">0 / 0 Done</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill fill-accent" id="checklist-progress-bar" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <form id="add-task-form" class="add-task-form">
+            <input type="text" id="task-input" class="form-control" placeholder="Add custom action item (e.g. Order custom cupcakes...)" required />
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add</button>
+          </form>
+
+          <ul class="task-list" id="task-list">
+            <!-- Dynamic items rendered via script.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planning Timeline -->
+    <section class="section timeline-section bg-surface" id="timeline">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Roadmap</span>
+          <h2 class="section-title">Countdown Timeline</h2>
+          <p class="section-desc">Follow a stress-free countdown so nothing slips through the cracks.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step reveal">
+            <div class="timeline-dot">30d</div>
+            <div class="timeline-content">
+              <h3>30 Days Before</h3>
+              <p>Lock down venue contract, settle on your core theme, and compile your master guest list.</p>
+            </div>
+          </div>
+          <div class="timeline-step reveal">
+            <div class="timeline-dot">15d</div>
+            <div class="timeline-content">
+              <h3>15 Days Before</h3>
+              <p>Dispatch digital invitations, book caterers & DJ, and order themed party decorations.</p>
+            </div>
+          </div>
+          <div class="timeline-step reveal">
+            <div class="timeline-dot">7d</div>
+            <div class="timeline-content">
+              <h3>7 Days Before</h3>
+              <p>Finalize RSVPs, communicate headcounts with catering, and assemble playlist requests.</p>
+            </div>
+          </div>
+          <div class="timeline-step reveal">
+            <div class="timeline-dot">1d</div>
+            <div class="timeline-content">
+              <h3>1 Day Before</h3>
+              <p>Venue access for staging & lighting tests, chill beverages, and pick up custom baked goods.</p>
+            </div>
+          </div>
+          <div class="timeline-step reveal">
+            <div class="timeline-dot">🎉</div>
+            <div class="timeline-content highlight">
+              <h3>Party Day!</h3>
+              <p>Pop the bubbly, welcome guests, and dance the night away. We've got everything covered!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Food & Entertainment Section Combined -->
+    <section class="section food-entertain-section">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Flavors & Fun</span>
+          <h2 class="section-title">Catering & Entertainment</h2>
+          <p class="section-desc">Delight appetites and keep the energy soaring all night long.</p>
+        </div>
+
+        <div class="grid grid-4 food-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon">🥂</div>
+            <h4>Artisan Mocktails & Cocktails</h4>
+            <p>Infused botanicals, smoked garnishes, and signature mocktails for all ages.</p>
+            <span class="cost-tag">~$12 / person</span>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🌮</div>
+            <h4>Gourmet Street Food Trucks</h4>
+            <p>Artisan tacos, slider bars, and wood-fired personal pizzas served fresh.</p>
+            <span class="cost-tag">~$22 / person</span>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">🎧</div>
+            <h4>Live Hybrid DJ & Sax</h4>
+            <p>High-energy club hits seamlessly blended with live instrumental saxophone.</p>
+            <span class="cost-tag">From $750</span>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon">📸</div>
+            <h4>360° Glamour Photo Booth</h4>
+            <p>Slow-motion video platform with instant cloud QR sharing and custom overlays.</p>
+            <span class="cost-tag">From $450</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invitation Generator -->
+    <section class="section invite-section bg-surface" id="invitation">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Instant Stationery</span>
+          <h2 class="section-title">Digital Invitation Generator</h2>
+          <p class="section-desc">Create sleek, sharable party invitations with instant styling presets.</p>
+        </div>
+
+        <div class="invite-generator-grid">
+          <form id="invite-form" class="invite-form reveal">
+            <div class="form-group">
+              <label for="inv-host">Host Name / Org</label>
+              <input type="text" id="inv-host" class="form-control" value="Sophia & Marcus" required />
+            </div>
+            <div class="form-group">
+              <label for="inv-title">Event Title</label>
+              <input type="text" id="inv-title" class="form-control" value="Summer Neon Rooftop Gala" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="inv-date">Date</label>
+                <input type="date" id="inv-date" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="inv-time">Time</label>
+                <input type="text" id="inv-time" class="form-control" value="7:30 PM Onwards" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inv-venue">Venue / Location</label>
+              <input type="text" id="inv-venue" class="form-control" value="The Sky Lounge, 5th Avenue" required />
+            </div>
+            <div class="form-group">
+              <label for="inv-msg">Special Message / Dress Code</label>
+              <textarea id="inv-msg" class="form-control" rows="2">Dress Code: Chic & Bright. Drinks and bites on us!</textarea>
+            </div>
+            <div class="form-group">
+              <label>Theme Style</label>
+              <div class="theme-picker">
+                <label class="theme-opt">
+                  <input type="radio" name="inv-theme" value="theme-neon" checked />
+                  <span>Neon Dark</span>
+                </label>
+                <label class="theme-opt">
+                  <input type="radio" name="inv-theme" value="theme-gold" />
+                  <span>Royal Gold</span>
+                </label>
+                <label class="theme-opt">
+                  <input type="radio" name="inv-theme" value="theme-blush" />
+                  <span>Blush Pastel</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-wand-magic"></i> Update Card</button>
+          </form>
+
+          <!-- Card Preview -->
+          <div class="invite-preview-wrapper reveal">
+            <div class="invite-card theme-neon" id="invite-card">
+              <div class="invite-inner">
+                <span class="invite-badge">YOU'RE INVITED</span>
+                <h3 class="preview-host" id="preview-host">Sophia & Marcus</h3>
+                <p class="preview-tag">cordially invite you to celebrate</p>
+                <h2 class="preview-title" id="preview-title">Summer Neon Rooftop Gala</h2>
+                
+                <div class="preview-details">
+                  <div class="p-detail-item">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="preview-date">Saturday, Oct 24, 2026</span>
+                  </div>
+                  <div class="p-detail-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="preview-time">7:30 PM Onwards</span>
+                  </div>
+                  <div class="p-detail-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="preview-venue">The Sky Lounge, 5th Avenue</span>
+                  </div>
+                </div>
+
+                <p class="preview-msg" id="preview-msg">"Dress Code: Chic & Bright. Drinks and bites on us!"</p>
+
+                <div class="preview-actions">
+                  <button type="button" class="btn btn-secondary btn-sm" id="copy-invite-btn">
+                    <i class="fa-regular fa-copy"></i> Copy Invitation Text
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Party Recommendation Quiz -->
+    <section class="section quiz-section" id="quiz">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Personalized Advisor</span>
+          <h2 class="section-title">What Party Style Fits You?</h2>
+          <p class="section-desc">Answer 3 brief questions and get instant theme, decor, and vibe recommendations.</p>
+        </div>
+
+        <div class="quiz-container reveal" id="quiz-container">
+          <!-- Step 1 -->
+          <div class="quiz-step active" data-step="1">
+            <h3 class="quiz-question">1. What's the scale and guest size?</h3>
+            <div class="quiz-options">
+              <button class="quiz-opt-btn" data-field="size" data-val="intimate">Intimate (Up to 25 people)</button>
+              <button class="quiz-opt-btn" data-field="size" data-val="medium">Mid-Sized Bash (25 - 80 people)</button>
+              <button class="quiz-opt-btn" data-field="size" data-val="grand">Grand Extravaganza (80+ people)</button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="quiz-step" data-step="2">
+            <h3 class="quiz-question">2. Preferred atmosphere and vibe?</h3>
+            <div class="quiz-options">
+              <button class="quiz-opt-btn" data-field="vibe" data-val="energetic">Energetic, Bass & Dance Floor</button>
+              <button class="quiz-opt-btn" data-field="vibe" data-val="classy">Classy, Elegant & Wine Tasting</button>
+              <button class="quiz-opt-btn" data-field="vibe" data-val="cozy">Relaxed, Cozy Games & Acoustic</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="quiz-step" data-step="3">
+            <h3 class="quiz-question">3. What setting do you favor?</h3>
+            <div class="quiz-options">
+              <button class="quiz-opt-btn" data-field="setting" data-val="outdoor">Open-air Garden or Rooftop</button>
+              <button class="quiz-opt-btn" data-field="setting" data-val="indoor">Chic Indoor Lounge or Hall</button>
+              <button class="quiz-opt-btn" data-field="setting" data-val="home">Warm & Welcoming Backyard/Home</button>
+            </div>
+          </div>
+
+          <!-- Results View -->
+          <div class="quiz-result" id="quiz-result" style="display: none;">
+            <div class="quiz-result-header">
+              <span class="badge">Your Ideal Match</span>
+              <h2 id="recommended-theme">Boho Sunset Glow</h2>
+              <p id="recommended-desc">A dream combination of warm strings, acoustic sounds, craft bites, and botanical floral elements.</p>
+            </div>
+            <div class="quiz-specs">
+              <div><strong>Decor Vibe:</strong> <span id="rec-decor">Fairy lights, macrame, rustic wood</span></div>
+              <div><strong>Suggested Sound:</strong> <span id="rec-music">Acoustic duo & Lo-fi beats</span></div>
+              <div><strong>Estimated Budget:</strong> <span id="rec-budget">$1,200 - $2,500</span></div>
+            </div>
+            <button class="btn btn-primary" id="quiz-restart-btn"><i class="fa-solid fa-rotate-right"></i> Retake Quiz</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="section testimonials-section bg-surface">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Real Celebrations</span>
+          <h2 class="section-title">Loved by Hosts Everywhere</h2>
+          <p class="section-desc">Over 15,000 memorable parties orchestrated with PartyPlan.</p>
+        </div>
+
+        <div class="testimonials-slider reveal">
+          <div class="testimonial-track" id="testimonial-track">
+            <!-- Slide 1 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"The budget breakdown saved our wedding. We trimmed venue costs and redirected money to a legendary DJ set that had everyone dancing till 3 AM!"</p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins" />
+                <div>
+                  <h5>Sarah Jenkins</h5>
+                  <span>Garden Wedding in Austin</span>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"Organized our college graduation festival in half the usual time. The digital invitations and dynamic checklist kept our 6-person student committee synced."</p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Liam Davies" />
+                <div>
+                  <h5>Liam Davies</h5>
+                  <span>University Campus Fest</span>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">"The quiz matched us with an 80s Retro Arcade theme for my husband's 40th. It was hands-down the best night of our decade. Absolutely brilliant tools."</p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova" />
+                <div>
+                  <h5>Elena Rostova</h5>
+                  <span>Milestone Birthday Bash</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-btn" id="prev-slide" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="slider-dots" id="slider-dots"></div>
+            <button class="slider-btn" id="next-slide" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="section-subtitle">Answers & Assistance</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about planning, budgeting, and staging your event.</p>
+        </div>
+
+        <div class="faq-accordion reveal">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How early should I start planning my party?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>For large events like weddings or corporate galas, we recommend 3 to 6 months in advance. For birthdays, graduation bashes, or dinner celebrations, 3 to 4 weeks is usually ideal to book preferred DJs, venues, and caterers.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How accurate is the Smart Budget Calculator?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Our smart allocator provides realistic industry ratios based on real average events. You can freely adjust numbers line-by-line to fit custom vendors or DIY substitutions.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Will my checklist progress be saved if I close this tab?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Our checklist harnesses native browser LocalStorage. Your completed checkmarks, additions, and custom items remain intact whenever you return on the same device.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I export and copy the generated invitation?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely. You can click the "Copy Invitation Text" button to grab formatted WhatsApp/SMS-ready text, or take a quick screenshot of your live styled card to share on social feeds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section bg-surface" id="contact">
+      <div class="container">
+        <div class="grid contact-layout">
+          <div class="contact-info reveal">
+            <span class="section-subtitle">Get in Touch</span>
+            <h2 class="section-title">Need Custom Event Coordination?</h2>
+            <p>Speak with our senior planner collective for high-profile weddings, campus fests, and multi-day retreats.</p>
+
+            <div class="contact-methods">
+              <div class="contact-method-item">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <h5>Email Us</h5>
+                  <p>hello@partyplan.example.com</p>
+                </div>
+              </div>
+              <div class="contact-method-item">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <h5>Call Hotline</h5>
+                  <p>+1 (800) 555-PARTY</p>
+                </div>
+              </div>
+              <div class="contact-method-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <h5>Studio Location</h5>
+                  <p>44 Celebration Blvd, Suite 200, Austin, TX</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper reveal">
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="c-name">Full Name *</label>
+                  <input type="text" id="c-name" class="form-control" placeholder="Jane Doe" required />
+                  <span class="error-text">Please provide your name</span>
+                </div>
+                <div class="form-group">
+                  <label for="c-email">Email Address *</label>
+                  <input type="email" id="c-email" class="form-control" placeholder="jane@example.com" required />
+                  <span class="error-text">Please enter a valid email</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="c-type">Event Type</label>
+                  <select id="c-type" class="form-control">
+                    <option>Birthday Bash</option>
+                    <option>Wedding</option>
+                    <option>Corporate Soirée</option>
+                    <option>College / School Fest</option>
+                    <option>Custom Celebration</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="c-date">Planned Date</label>
+                  <input type="date" id="c-date" class="form-control" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="c-message">Tell Us About Your Vision *</label>
+                <textarea id="c-message" class="form-control" rows="4" placeholder="Guest estimate, dream theme, special requirements..." required></textarea>
+                <span class="error-text">Please provide a short message</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Send Planner Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="#home" class="logo">
+          <span class="logo-icon"><i class="fa-solid fa-champagne-glasses"></i></span>
+          <span class="logo-text">Party<span class="gradient-text">Plan</span></span>
+        </a>
+        <p class="footer-tagline">Crafting world-class memories through modern digital design, intuitive budgets, and festive inspiration.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#events">Categories</a></li>
+          <li><a href="#ideas">Ideas Explorer</a></li>
+          <li><a href="#budget">Budget Planner</a></li>
+          <li><a href="#checklist">Interactive Tasks</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Celebrations</h4>
+        <ul class="footer-links">
+          <li><a href="#events">Birthday Parties</a></li>
+          <li><a href="#events">Romantic Weddings</a></li>
+          <li><a href="#events">School & College Fests</a></li>
+          <li><a href="#events">Corporate Galas</a></li>
+          <li><a href="#events">Baby Showers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Join The Party Newsletter</h4>
+        <p>Get exclusive quarterly theme catalogs and planning deals.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required class="form-control" />
+          <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom container">
+      <p>&copy; 2026 PartyPlan. Celebrate Every Moment. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Gallery -->
+  <div class="modal" id="gallery-modal" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close dialog">&times;</button>
+      <img id="modal-img" src="" alt="Theme Preview" />
+      <div class="modal-info">
+        <h3 id="modal-title">Theme Title</h3>
+        <p id="modal-desc">Theme description goes here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Back To Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
